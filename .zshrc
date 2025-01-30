@@ -122,8 +122,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # StarShip Prompt (again lol)
 eval "$(starship init zsh)"
 
-# Using Eza instead of ls 
-alias ls="eza -a -l --icons=always --color=auto --no-time --no-permissions -lah --grid --git --group-directories-first"
+
 
 # Better zsh history setup
 HISTFILE=$HOME/.zhistory
@@ -141,6 +140,9 @@ bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
 
+# configuring fzf-tab
+# preview directory's content with eza when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 
 # ---- Zoxide (better cd) ----
 eval "$(zoxide init zsh)"
@@ -159,9 +161,6 @@ if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
         print -P "%F{160} The clone has failed.%f%b"
 fi
 
-# configuring fzf-tab
-# preview directory's content with eza when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 
 # Installing plugins
 zinit snippet OMZP::command-not-found
