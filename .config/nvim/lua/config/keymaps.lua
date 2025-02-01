@@ -44,3 +44,7 @@ keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find str
 keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
 
 -- some keymaps for errors are defined in config/plugins/trouble.lua
+
+-- setting up window switching
+keymap.set({ "i", "n" }, "<C-h>", "<C-w>h", { desc = "Switching to left window" })
+keymap.set({ "i", "n" }, "<C-l>", "<C-w>l", { desc = "Switching to right window" })
