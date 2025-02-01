@@ -48,3 +48,6 @@ keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find s
 -- setting up window switching
 keymap.set({ "i", "n" }, "<C-h>", "<C-w>h", { desc = "Switching to left window" })
 keymap.set({ "i", "n" }, "<C-l>", "<C-w>l", { desc = "Switching to right window" })
+
+-- MY OWN PlUGINS NOW
+-- keymap.set("n", "<leader>cc", "<cmd>CommentToggle<CR>", { desc = "Toggle comment" }) -- toggle comment

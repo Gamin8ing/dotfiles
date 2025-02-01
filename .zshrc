@@ -81,5 +81,8 @@ alias lsa="eza -a -l -G --icons=always --group-directories-first --git --no-perm
 alias lg="lazygit" 
 # type lg for lazy git, this saves so much time
 
+alias c="clear"
 
-echo "Done Sourcing!"
+
+# ------------- END ------------------------------------
+echo -e "Welcome to the Matrix, Bhavya!"

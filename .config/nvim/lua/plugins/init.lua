@@ -47,7 +47,6 @@ return {
 	-- github copilot
 	{
 		"github/copilot.vim",
-		opts = {},
 	},
 }
 -- TODO:
