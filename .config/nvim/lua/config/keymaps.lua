@@ -1,6 +1,6 @@
 -- set leader key to space
 vim.g.mapleader = " "
-
+vim.opt.timeoutlen = 700
 local keymap = vim.keymap -- for conciseness
 
 ---------------------

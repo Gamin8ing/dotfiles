@@ -4,7 +4,12 @@ return {
 		"sphamba/smear-cursor.nvim",
 		opts = {
 			smear_insert_mode = false,
-			egacy_computing_symbols_support = true,
+			legacy_computing_symbols_support = true,
+			-- making it more stiff
+			stiffness = 0.8,
+			trailing_stiffness = 0.6,
+			distance_stop_animating = 0.5,
+			hide_target_hack = false,
 		},
 	},
 	{
@@ -48,5 +53,14 @@ return {
 	{
 		"github/copilot.vim",
 	},
+	{
+		"lervag/vimtex",
+		lazy = false, -- we don't want to lazy load VimTeX
+		-- tag = "v2.15", -- uncomment to pin to a specific release
+		init = function()
+			-- VimTeX configuration goes here, e.g.
+			vim.g.vimtex_view_method = "zathura"
+		end,
+	}, -- vimtex for latex + neovim
 }
 -- TODO:
