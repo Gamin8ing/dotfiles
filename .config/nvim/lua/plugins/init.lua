@@ -2,14 +2,15 @@ return {
 	"nvim-lua/plenary.nvim",
 	{
 		"sphamba/smear-cursor.nvim",
+		enabled = false,
 		opts = {
-			smear_insert_mode = false,
+			smear_insert_mode = true,
 			legacy_computing_symbols_support = true,
 			-- making it more stiff
 			stiffness = 0.8,
 			trailing_stiffness = 0.6,
 			distance_stop_animating = 0.5,
-			hide_target_hack = false,
+			horizontal_bar_cursor_replace_mode = true,
 		},
 	},
 	{
@@ -60,7 +61,23 @@ return {
 		init = function()
 			-- VimTeX configuration goes here, e.g.
 			vim.g.vimtex_view_method = "zathura"
+			vim.g.vimtex_view_forward_search_on_start = false
+			vim.g.vimtex_compiler_latexmk = {
+				aux_dir = "/home/bhavya/.texfiles",
+				out_dir = "/home/bhavya/.texfiles",
+			}
 		end,
 	}, -- vimtex for latex + neovim
+	{
+		"ThePrimeagen/vim-be-good",
+	}, -- vim be good to practive the vim movement
+	{
+		"3rd/image.nvim",
+	}, -- to view images in nvim, its not officially supported by wezterm, but lets see
+	-- For `plugins.lua` users.
+	{
+		"OXY2DEV/markview.nvim",
+		lazy = false,
+	},
 }
 -- TODO:

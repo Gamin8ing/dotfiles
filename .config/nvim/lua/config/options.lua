@@ -29,6 +29,14 @@ opt.cursorline = true -- highlight the current cursor line
 opt.termguicolors = true
 opt.background = "dark" -- colorschemes that can be light or dark will be made dark
 opt.signcolumn = "yes" -- show sign column so that text doesn't shift
+opt.guicursor = {
+	"n-v-c:block",
+	"i-ci-ve:ver25",
+	"r-cr:hor20",
+	"o:hor50",
+	"i-ci-ve-r-cr-o:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
+	"sm:block-blinkwait175-blinkoff150-blinkon175",
+}
 
 -- backspace
 opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
@@ -42,3 +50,15 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swapfile
 opt.swapfile = false
+
+-- turning on spell checker fo markdown and text files
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "markdown", "txt", "env" },
+	callback = function(opts)
+		local cmp = require("cmp")
+		cmp.setup.buffer({ enabled = false })
+		-- have to renable the spell  checker
+		vim.opt.spelllang = "en_us"
+		vim.opt.spell = true
+	end,
+})

@@ -85,4 +85,7 @@ alias c="clear"
 
 
 # ------------- END ------------------------------------
+export EDITOR="nvim"
 echo -e "Welcome to the Matrix, Bhavya!"
+
+. "$HOME/.local/bin/env"
