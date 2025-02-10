@@ -52,10 +52,10 @@ keymap.set({ "i", "n" }, "<C-j>", "<C-w>j", { desc = "Switching to bottom window
 keymap.set({ "i", "n" }, "<C-k>", "<C-w>k", { desc = "Switching to top window" })
 
 -- move lines up and down
-keymap.set({ "n", "i" }, "<A-j>", "<cmd>m .+1<CR>==", { desc = "Move line down" })
-keymap.set({ "n", "i" }, "<A-k>", "<cmd>m .-2<CR>==", { desc = "Move line up" })
-keymap.set({ "i", "n" }, "<A-Down>", "<cmd>m .+1<CR>==", { desc = "Move line down" })
-keymap.set({ "i", "n" }, "<A-Up>", "<cmd>m .-2<CR>==", { desc = "Move line up" })
+keymap.set({ "n", "i" }, "<A-j>", "<cmd>m .+1<CR>", { desc = "Move line down" })
+keymap.set({ "n", "i" }, "<A-k>", "<cmd>m .-2<CR>", { desc = "Move line up" })
+keymap.set({ "i", "n" }, "<A-Down>", "<cmd>m .+1<CR>", { desc = "Move line down" })
+keymap.set({ "i", "n" }, "<A-Up>", "<cmd>m .-2<CR>", { desc = "Move line up" })
 
 -- MY OWN PlUGINS NOW
 -- keymap.set("n", "<leader>cc", "<cmd>CommentToggle<CR>", { desc = "Toggle comment" }) -- toggle comment
