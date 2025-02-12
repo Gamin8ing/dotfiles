@@ -10,8 +10,7 @@ resurrect.periodic_save({ interval_seconds = 15 * 60, save_workspaces = true, sa
 -- bulding the wezterm config builder
 local config = wezterm.config_builder()
 
--- selecting all GPUs
-local gpus = wezterm.gui.enumerate_gpus()
+-- print(gpus)
 
 -- changing the renderer to GPU
 config.front_end = "WebGpu"
@@ -24,54 +23,53 @@ local SOLID_RIGHT_ARROW = utf8.char(0xe0b0) -- solid filled in variant of >
 config.color_scheme = "Tokyo Night" -- nordfox -- "coolnite" -- "Tokyo Night" -- "Catppuccin Macchiato" some others are 'Dracula', 'rose-pinr'
 -- my coolnight colorscheme:
 config.colors = {
---     foreground = colors.foreground,
---     background = colors.background,
-    
---     cursor_bg = colors.cursor_bg,
---     cursor_border = colors.cursor_border,
---     cursor_fg = colors.cursor_fg,
-    
---     selection_bg = colors.selection_bg,
---     selection_fg = colors.selection_fg,
+	--     foreground = colors.foreground,
+	--     background = colors.background,
 
---     ansi = {
---         colors.black,
---         colors.red,
---         colors.green,
---         colors.yellow,
---         colors.blue,
---         colors.purple,
---         colors.light_cyan,
---         colors.white,
---     },
+	--     cursor_bg = colors.cursor_bg,
+	--     cursor_border = colors.cursor_border,
+	--     cursor_fg = colors.cursor_fg,
 
---     brights = {
---         colors.bright_black,
---         colors.bright_red,
---         colors.bright_green,
---         colors.bright_yellow,
---         colors.bright_blue,
---         colors.bright_purple,
---         colors.bright_light_cyan,
---         colors.bright_white,
---     },
+	--     selection_bg = colors.selection_bg,
+	--     selection_fg = colors.selection_fg,
 
-    tab_bar = {
-        background = colors.tab_bar_bg,
+	--     ansi = {
+	--         colors.black,
+	--         colors.red,
+	--         colors.green,
+	--         colors.yellow,
+	--         colors.blue,
+	--         colors.purple,
+	--         colors.light_cyan,
+	--         colors.white,
+	--     },
 
---         active_tab = {
---             bg_color = colors.active_tab_bg,
---             fg_color = colors.active_tab_fg,
---             intensity = "Bold",
---         },
+	--     brights = {
+	--         colors.bright_black,
+	--         colors.bright_red,
+	--         colors.bright_green,
+	--         colors.bright_yellow,
+	--         colors.bright_blue,
+	--         colors.bright_purple,
+	--         colors.bright_light_cyan,
+	--         colors.bright_white,
+	--     },
 
---         inactive_tab = {
---             bg_color = colors.inactive_tab_bg,
---             fg_color = colors.inactive_tab_fg,
---         },
-    },
+	tab_bar = {
+		background = colors.tab_bar_bg,
+
+		--         active_tab = {
+		--             bg_color = colors.active_tab_bg,
+		--             fg_color = colors.active_tab_fg,
+		--             intensity = "Bold",
+		--         },
+
+		--         inactive_tab = {
+		--             bg_color = colors.inactive_tab_bg,
+		--             fg_color = colors.inactive_tab_fg,
+		--         },
+	},
 }
-
 
 -- Dim inactive panes
 config.inactive_pane_hsb = {
@@ -80,7 +78,7 @@ config.inactive_pane_hsb = {
 }
 
 -- windows opacity
-config.window_background_opacity = 0.8
+config.window_background_opacity = 0.7
 config.win32_system_backdrop = "Acrylic"
 
 -- tab bar config
@@ -100,29 +98,29 @@ local _ = 0
 -- Format tab title - adding arrow in front of them
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
 	-- print(tab:tab_id())
-    local is_active = tab.is_active
-    local next_is_active = false
+	local is_active = tab.is_active
+	local next_is_active = false
 	-- local title = tab.title
 
-    for i, t in ipairs(tabs) do
+	for i, t in ipairs(tabs) do
 		if i == 1 then
 			firstTabId = t.tab_id
 		end
-        if t.tab_id == tab.tab_id and i < #tabs then
-            next_is_active = tabs[i + 1].is_active
-            break
-        end
-    end
+		if t.tab_id == tab.tab_id and i < #tabs then
+			next_is_active = tabs[i + 1].is_active
+			break
+		end
+	end
 
-    local active_bg = colors.blue
+	local active_bg = colors.blue
 	local active_fg = colors.background
 	local inactive_bg = colors.inactive_tab_bg
 	local inactive_fg = colors.inactive_tab_fg
 
-    local arrow_fg = is_active and active_bg or inactive_bg
-    local arrow_bg = is_active and inactive_bg or (next_is_active and active_bg or inactive_bg)
-    local tab_fg = is_active and active_fg or inactive_fg
-    local tab_bg = is_active and active_bg or inactive_bg
+	local arrow_fg = is_active and active_bg or inactive_bg
+	local arrow_bg = is_active and inactive_bg or (next_is_active and active_bg or inactive_bg)
+	local tab_fg = is_active and active_fg or inactive_fg
+	local tab_bg = is_active and active_bg or inactive_bg
 
 	local title = "home"
 	-- print("this: " .. string.len(tab.tab_title))
@@ -140,17 +138,23 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 		arrow_bg = "rgba(0,0,0,0)"
 	end
 
-    return {
-        -- Changed order to show arrow after tab
-        { Background = { Color = tab_bg } },
-        { Foreground = { Color = tab_fg } },
-        { Text = " " .. title .. " " },
-        
-        { Background = { Color = arrow_bg } },
-        { Foreground = { Color = arrow_fg } },
-        { Text = SOLID_RIGHT_ARROW },
-    }
+	return {
+		-- Changed order to show arrow after tab
+		{ Background = { Color = tab_bg } },
+		{ Foreground = { Color = tab_fg } },
+		{ Text = " " .. title .. " " },
+
+		{ Background = { Color = arrow_bg } },
+		{ Foreground = { Color = arrow_fg } },
+		{ Text = SOLID_RIGHT_ARROW },
+	}
 end)
+
+-- config.default_cursor_style = "BlinkingBar"
+config.cursor_blink_ease_in = "Constant"
+config.cursor_blink_ease_out = "Constant"
+-- setting the cursor blink easing to none or well constant, well because I like it that way
+config.cursor_blink_rate = 600
 
 -- window padding
 config.window_padding = {
@@ -159,7 +163,7 @@ config.window_padding = {
 	top = 2,
 	bottom = 0,
 }
-config.window_background_image = "C:\\Users\\ASUS\\.config\\wezterm\\bg-blurred-darker.png"
+config.window_background_image = "C:\\Users\\ASUS\\.config\\wezterm\\bg-blurred.png"
 
 -- changing the startup program and setting up WSL
 config.wsl_domains = {
@@ -173,19 +177,22 @@ config.default_domain = "WSL:Ubuntu"
 config.default_prog = { "wsl" }
 
 -- configuring font
-config.font = wezterm.font("JetBrains Mono")
-config.font_rules = {
-	{
-		intensity = "Bold",
-		italic = false,
-		font = wezterm.font("JetBrains Mono", { weight = "Bold", stretch = "Normal", style = "Normal" }),
-	},
-	{
-		intensity = "Bold",
-		italic = true,
-		font = wezterm.font("JetBrains Mono", { weight = "Bold", stretch = "Normal", style = "Italic" }),
-	},
-}
+-- 01234567890 abcdefghipqrstuvwxyz, Hello how are you guys?
+-- hey guys, isnt it sexy? huh 0123
+config.font = wezterm.font_with_fallback({ "Fira Code", "JetBrains Mono" })
+-- config.font = wezterm.font("JetBrains Mono")
+-- config.font_rules = {
+-- 	{
+-- 		intensity = "Bold",
+-- 		italic = false,
+-- 		font = wezterm.font("JetBrains Mono", { weight = "Bold", stretch = "Normal", style = "Normal" }),
+-- 	},
+-- 	{
+-- 		intensity = "Bold",
+-- 		italic = true,
+-- 		font = wezterm.font("JetBrains Mono", { weight = "Bold", stretch = "Normal", style = "Italic" }),
+-- 	},
+-- }
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.line_height = 1.05
 config.cell_width = 1
@@ -227,7 +234,7 @@ config.keys = {
 		mods = "LEADER",
 		action = wezterm.action({ CloseCurrentPane = { confirm = false } }),
 	},
-	{ key = "m", mods = "LEADER", action = wezterm.action.TogglePaneZoomState },
+	{ key = "p", mods = "LEADER", action = wezterm.action.TogglePaneZoomState }, -- maximizing the active pane
 	{
 		mods = "LEADER",
 		key = "h",
@@ -263,7 +270,7 @@ config.keys = {
 		key = "t",
 		mods = "LEADER",
 		action = wezterm.action.SpawnTab("CurrentPaneDomain"),
-	},
+	}, -- create new tab
 	{ key = "n", mods = "LEADER", action = wezterm.action.ShowTabNavigator },
 	{
 		key = "e",
@@ -280,12 +287,12 @@ config.keys = {
 				end
 			end),
 		}),
-	},
+	}, -- rename tab
 	{
 		key = "m",
 		mods = "LEADER",
 		action = wezterm.action.ActivateKeyTable({ name = "move_tab", one_shot = false }),
-	},
+	}, -- moving btween tabs
 	-- workspace key bindings
 	{ key = "]", mods = "LEADER", action = wezterm.action.SwitchWorkspaceRelative(1) },
 	{ key = "[", mods = "LEADER", action = wezterm.action.SwitchWorkspaceRelative(-1) },
@@ -317,60 +324,60 @@ config.keys = {
 				end
 			end),
 		}),
-	},
+	}, -- renaming the current workspace
 	{
 		key = "w",
 		mods = "ALT",
 		action = wezterm.action_callback(function(win, pane)
 			resurrect.save_state(resurrect.workspace_state.get_workspace_state())
-		  end),
-	  },
-	  {
+		end),
+	},
+	{
 		key = "W",
 		mods = "ALT",
 		action = resurrect.window_state.save_window_action(),
-	  },
-	  {
+	},
+	{
 		key = "t",
 		mods = "CTRL",
 		action = resurrect.tab_state.save_tab_action(),
-	  },
-	  {
+	},
+	{
 		key = "s",
 		mods = "ALT",
 		action = wezterm.action_callback(function(win, pane)
 			resurrect.save_state(resurrect.workspace_state.get_workspace_state())
 			resurrect.window_state.save_window_action()
-		  end),
-	  },
-	  {
+		end),
+	},
+	{
 		key = "p",
 		mods = "ALT",
 		action = wezterm.action_callback(function(win, pane)
-		  resurrect.fuzzy_load(win, pane, function(id, label)
-			local type = string.match(id, "^([^/]+)") -- match before '/'
-			id = string.match(id, "([^/]+)$") -- match after '/'
-			id = string.match(id, "(.+)%..+$") -- remove file extention
-			local opts = {
-			  relative = true,
-			  restore_text = true,
-			  on_pane_restore = resurrect.tab_state.default_on_pane_restore,
-			}
-			if type == "workspace" then
-			  local state = resurrect.load_state(id, "workspace")
-			  resurrect.workspace_state.restore_workspace(state, opts)
-			elseif type == "window" then
-			  local state = resurrect.load_state(id, "window")
-			  resurrect.window_state.restore_window(pane:window(), state, opts)
-			elseif type == "tab" then
-			  local state = resurrect.load_state(id, "tab")
-			  resurrect.tab_state.restore_tab(pane:tab(), state, opts)
-			end
-		  end)
+			resurrect.fuzzy_load(win, pane, function(id, label)
+				local type = string.match(id, "^([^/]+)") -- match before '/'
+				id = string.match(id, "([^/]+)$") -- match after '/'
+				id = string.match(id, "(.+)%..+$") -- remove file extention
+				local opts = {
+					relative = true,
+					restore_text = true,
+					on_pane_restore = resurrect.tab_state.default_on_pane_restore,
+				}
+				if type == "workspace" then
+					local state = resurrect.load_state(id, "workspace")
+					resurrect.workspace_state.restore_workspace(state, opts)
+				elseif type == "window" then
+					local state = resurrect.load_state(id, "window")
+					resurrect.window_state.restore_window(pane:window(), state, opts)
+				elseif type == "tab" then
+					local state = resurrect.load_state(id, "tab")
+					resurrect.tab_state.restore_tab(pane:tab(), state, opts)
+				end
+			end)
 		end),
-	  },
-	  -- to completely quit wezterm
-	  { key = 'Q', mods = 'ALT|SHIFT', action = wezterm.action.QuitApplication },
+	},
+	-- to completely quit wezterm
+	{ key = "Q", mods = "ALT|SHIFT", action = wezterm.action.QuitApplication },
 }
 
 for i = 0, 9 do
@@ -405,7 +412,7 @@ config.key_tables = {
 -- status bar
 config.status_update_interval = 1000
 wezterm.on("update-status", function(window, pane)
-    -- Left status bar configs
+	-- Left status bar configs
 	local BACKGROUND = { Background = { Color = colors.green } }
 	local FOREGROUND = { Foreground = { Color = colors.background } }
 	local prefix = " " .. wezterm.nerdfonts.cod_multiple_windows .. " " .. window:active_workspace()
@@ -425,76 +432,76 @@ wezterm.on("update-status", function(window, pane)
 	local is_0th_tab_active = active_tab_index == firstTabId
 
 	local ARR_BG = {
-		Background = is_0th_tab_active and
-			{ Color = colors.blue } or
-			{ Color = colors.inactive_tab_bg }
+		Background = is_0th_tab_active and { Color = colors.blue } or { Color = colors.inactive_tab_bg },
 	}
 
 	local ARR_FG = { Foreground = BACKGROUND.Background }
-	
-    -- Left status bar
-    window:set_left_status(wezterm.format({
-        FOREGROUND,
-        BACKGROUND,
-        { Attribute = { Intensity = "Bold" } },
-        { Text = prefix },
-        "ResetAttributes",
-        ARR_FG,
-        ARR_BG,
-        { Text = SOLID_RIGHT_ARROW },
-    }))
 
-    -- Right status bar (UPDATED with left arrow)
-    local function basename(s)
-        return string.gsub(s, "(.*[/\\])(.*)", "%2")
-    end
+	-- Left status bar
+	window:set_left_status(wezterm.format({
+		FOREGROUND,
+		BACKGROUND,
+		{ Attribute = { Intensity = "Bold" } },
+		{ Text = prefix },
+		"ResetAttributes",
+		ARR_FG,
+		ARR_BG,
+		{ Text = SOLID_RIGHT_ARROW },
+	}))
 
-    local bat = 'this much battery'
-	local th = 'md_battery_charging_'
+	-- Right status bar (UPDATED with left arrow)
+	local function basename(s)
+		return string.gsub(s, "(.*[/\\])(.*)", "%2")
+	end
+
+	local bat = "this much battery"
+	local th = "md_battery_charging_"
 	-- print(wezterm.nerdfonts[th])
 	for _, b in ipairs(wezterm.battery_info()) do
 		local batPer = b.state_of_charge * 100
-		local batsign = th .. math.tointeger((batPer//10)*10)
+		local batsign = th .. math.tointeger((batPer // 10) * 10)
 		batsign = wezterm.nerdfonts[batsign]
-		bat = " " .. batsign .. " " .. string.format('%.0f%%', batPer) 
+		bat = " " .. batsign .. " " .. string.format("%.0f%%", batPer)
 	end
-	
-    local time1 = os.date("%d %b,%Y") 
+
+	local time1 = os.date("%d %b,%Y")
 	local time2 = os.date("%I:%M %p")
 
 	window:set_right_status(wezterm.format({
 		-- Added left arrow with matching colors
-		{Foreground = {Color = colors.black}},
-		{Background = {Color = colors.tab_bar_bg}},
-		{Text = SOLID_LEFT_ARROW},
+		{ Foreground = { Color = colors.black } },
+		{ Background = { Color = colors.tab_bar_bg } },
+		{ Text = SOLID_LEFT_ARROW },
 
-		{Foreground = {Color = colors.foreground}},
-		{Background = {Color = colors.black}},
-		{Attribute = {Intensity = "Bold"}},
-		{Text = bat .. " "},
+		{ Foreground = { Color = colors.foreground } },
+		{ Background = { Color = colors.black } },
+		{ Attribute = { Intensity = "Bold" } },
+		{ Text = bat .. " " },
 
-		{Foreground = {Color = colors.blue}},
-		{Background = {Color = colors.black}},
-		{Text = SOLID_LEFT_ARROW},
+		{ Foreground = { Color = colors.blue } },
+		{ Background = { Color = colors.black } },
+		{ Text = SOLID_LEFT_ARROW },
 
-		{Background = {Color = colors.blue}},
-		{Foreground = {Color = colors.background}},
-		{Text = " " .. wezterm.nerdfonts.md_calendar_month .. " " .. time1 .. " "},
+		{ Background = { Color = colors.blue } },
+		{ Foreground = { Color = colors.background } },
+		{ Text = " " .. wezterm.nerdfonts.md_calendar_month .. " " .. time1 .. " " },
 
-		{Background = {Color = colors.blue}},
-		{Foreground = {Color = colors.green}},
-		{Text = SOLID_LEFT_ARROW},
+		{ Background = { Color = colors.blue } },
+		{ Foreground = { Color = colors.green } },
+		{ Text = SOLID_LEFT_ARROW },
 
-		{Foreground = {Color = colors.background}},
-		{Background = {Color = colors.green}},
-		{Text = " " .. wezterm.nerdfonts.fa_clock_o .. " " .. time2 .. " "},
+		{ Foreground = { Color = colors.background } },
+		{ Background = { Color = colors.green } },
+		{ Text = " " .. wezterm.nerdfonts.fa_clock_o .. " " .. time2 .. " " },
 
 		"ResetAttributes",
 	}))
 end)
 
-config.max_fps = 144
+-- config.max_fps = 144
 wezterm.on("gui-startup", resurrect.resurrect_on_gui_startup)
 
 -- finally returning the config
 return config
+
+-- hello guys
