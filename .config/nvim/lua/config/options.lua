@@ -34,9 +34,9 @@ opt.guicursor = {
 	"i-ci-ve:ver25",
 	"r-cr:hor20",
 	"o:hor50",
-	"i-ci-ve-r-cr-o:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
-	"sm:block-blinkwait175-blinkoff150-blinkon175",
-}
+	"i-ci-ve-r-cr-o:blinkon100",
+	"sm:block-blinkon100",
+} -- setting up the cursor
 
 -- backspace
 opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position

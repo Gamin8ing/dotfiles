@@ -46,16 +46,18 @@ keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find s
 -- some keymaps for errors are defined in config/plugins/trouble.lua
 
 -- setting up window switching
-keymap.set({ "i", "n" }, "<C-h>", "<C-w>h", { desc = "Switching to left window" })
-keymap.set({ "i", "n" }, "<C-l>", "<C-w>l", { desc = "Switching to right window" })
-keymap.set({ "i", "n" }, "<C-j>", "<C-w>j", { desc = "Switching to bottom window" })
-keymap.set({ "i", "n" }, "<C-k>", "<C-w>k", { desc = "Switching to top window" })
+keymap.set({ "n" }, "<C-h>", "<C-w>h", { desc = "Switching to left window" })
+keymap.set({ "n" }, "<C-l>", "<C-w>l", { desc = "Switching to right window" })
+keymap.set({ "n" }, "<C-j>", "<C-w>j", { desc = "Switching to bottom window" })
+keymap.set({ "n" }, "<C-k>", "<C-w>k", { desc = "Switching to top window" })
 
 -- move lines up and down
 keymap.set({ "n", "i" }, "<A-j>", "<cmd>m .+1<CR>", { desc = "Move line down" })
 keymap.set({ "n", "i" }, "<A-k>", "<cmd>m .-2<CR>", { desc = "Move line up" })
 keymap.set({ "i", "n" }, "<A-Down>", "<cmd>m .+1<CR>", { desc = "Move line down" })
 keymap.set({ "i", "n" }, "<A-Up>", "<cmd>m .-2<CR>", { desc = "Move line up" })
+
+keymap.set("i", "<C-BS>", "<C-w>", { desc = "delete a single word back using ctrl+back" })
 
 -- MY OWN PlUGINS NOW
 -- keymap.set("n", "<leader>cc", "<cmd>CommentToggle<CR>", { desc = "Toggle comment" }) -- toggle comment

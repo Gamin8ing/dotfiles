@@ -12,3 +12,18 @@ require("lspconfig").clangd.setup({
 		"--offset-encoding=utf-16",
 	},
 })
+
+-- --------- LuaSnip Config -------------------
+--
+-- configuring luasnips snippet?
+require("luasnip").config.set_config({ --setting luasnip config
+	enable_autosnippets = true,
+	--enable autotriggered snippets
+	store_selection_keys = "<Tab>",
+})
+
+-- loading all snippets from custom directory at startup
+require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/LuaSnip/" })
+
+-- lazy load the snippets, i.e. only when certain filetypes are open
+require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/LuaSnip/" })
