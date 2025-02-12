@@ -81,10 +81,13 @@ alias lsa="eza -a -l -G --icons=always --group-directories-first --git --no-perm
 alias lg="lazygit" 
 # type lg for lazy git, this saves so much time
 
+# use `c` for clear duh
 alias c="clear"
 
 
 # ------------- END ------------------------------------
+# trying vim keybindings in zsh?
+bindkey -v
 export EDITOR="nvim"
 echo -e "Welcome to the Matrix, Bhavya!"
 
