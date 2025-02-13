@@ -60,12 +60,13 @@ return {
 		-- tag = "v2.15", -- uncomment to pin to a specific release
 		init = function()
 			-- VimTeX configuration goes here, e.g.
-			vim.g.vimtex_view_method = "zathura"
+			vim.g.vimtex_view_method = "zathura_simple"
 			vim.g.vimtex_view_forward_search_on_start = false
 			vim.g.vimtex_compiler_latexmk = {
 				aux_dir = "/home/bhavya/.texfiles",
 				out_dir = "/home/bhavya/.texfiles",
 			}
+			vim.g.vimtex_quickfix_open_on_warning = 0 -- to disable quickfix on warning
 		end,
 	}, -- vimtex for latex + neovim
 	{
