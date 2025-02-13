@@ -20,6 +20,7 @@ require("luasnip").config.set_config({ --setting luasnip config
 	enable_autosnippets = true,
 	--enable autotriggered snippets
 	store_selection_keys = "<Tab>",
+	update_events = "TextChanged,TextChangedI",
 })
 
 -- loading all snippets from custom directory at startup
