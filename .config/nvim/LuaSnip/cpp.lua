@@ -30,8 +30,32 @@ return {
 	s({ trig = "cout", snippetType = "autosnippet" }, {
 		t("std::cout"),
 	}),
-	-- endl to std::'\n'
-	s({ trig = "endl", snippetType = "autosnippet" }, {
-		t("'\n'"),
+	s({ trig = "cin", snippetType = "autosnippet" }, {
+		t("std::cin"),
 	}),
+	-- endl to '\n'
+	s({ trig = "endl", snippetType = "autosnippet" }, {
+		t("'\\n'"),
+	}),
+
+	-- cp setup
+	s(
+		{ trig = "cp", snippetType = "autosnippet" },
+		fmt(
+			[[
+      #include <bits/stdc++.h>
+      using namespace std;
+    
+      int main() {
+        `:
+
+        return 0;
+      }
+    ]],
+			{
+				i(0, "int test;", "std::cin >> test;", "while (test--){", " ", "}"),
+			},
+			{ delimiters = "`:" }
+		)
+	),
 }
