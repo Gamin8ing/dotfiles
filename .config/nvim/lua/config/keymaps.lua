@@ -61,3 +61,18 @@ keymap.set("i", "<C-BS>", "<C-w>", { desc = "delete a single word back using ctr
 
 -- MY OWN PlUGINS NOW
 -- keymap.set("n", "<leader>cc", "<cmd>CommentToggle<CR>", { desc = "Toggle comment" }) -- toggle comment
+
+-- CP setup
+keymap.set(
+	"n",
+	"<F5>",
+	":w <CR> :!g++ -fsanitize=address -Wall -Wextra -Wshadow -DONPC -O2 -o r % <CR>",
+	{ desc = "press to compile the current cpp file named output as r" }
+) -- it simply compiles the code
+-- input from a file setup
+keymap.set(
+	"n",
+	"<F6>",
+	"<cmd>!g++ -fsanitize=address -Wall -Wextra -Wshadow -DONPC -O2 -o r % && ./r < input.txt > output.txt 2>&1 <CR>",
+	{ desc = "press to compile the current cpp file named output as r" }
+) -- it simply compiles the code
