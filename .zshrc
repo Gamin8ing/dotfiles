@@ -93,7 +93,7 @@ export EDITOR="nvim"
 echo -e "Welcome to the Matrix, Bhavya!"
 
 # checking for dotfiles cron job
-# Check if dotfiles were successfully pushed
+# Check if dotfiles were successfully pushed checks daily
 if grep -i "error" ~/dotfiles/git_cron.log; then
     echo "\e[31mDotfiles not synchronised!\e[0m"  # Red output
 elif grep -q "To github.com" ~/dotfiles/git_cron.log; then
