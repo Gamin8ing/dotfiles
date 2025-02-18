@@ -389,6 +389,13 @@ for i = 0, 9 do
 	})
 end
 
+-- -- trying for a cp setup
+-- wezterm.on("update-status", function(window, pane)
+-- 	-- Force panes to refresh periodically
+-- 	window:set_right_status("Refreshing...")
+-- end)
+-- config.status_update_interval = 100
+
 -- key tables
 config.key_tables = {
 	resize_pane = {
