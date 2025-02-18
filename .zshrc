@@ -94,10 +94,12 @@ echo -e "Welcome to the Matrix, Bhavya!"
 
 # checking for dotfiles cron job
 # Check if dotfiles were successfully pushed
-if [[ -s ~/dotfiles/git_cron.log ]]; then
-    echo -e "\033[31mDotfiles not synchronized\033[0m"  # Red text
+if grep -i "error" ~/dotfiles/git_cron.log; then
+    echo "\e[31mDotfiles not synchronised!\e[0m"  # Red output
+elif grep -q "To github.com" ~/dotfiles/git_cron.log; then
+    echo "\e[32mDotfiles synced!\e[0m"  # Green output
 else
-    echo -e "\033[32mDotfiles synced, All Good!\033[0m"  # Green text
+    echo "\e[33mNo new updates to dotfiles\e[0m"  # Yellow output
 fi
 
 
