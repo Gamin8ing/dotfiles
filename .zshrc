@@ -84,11 +84,21 @@ alias lg="lazygit"
 # use `c` for clear duh
 alias c="clear"
 
-
+# vim like quitting?
+alias :q="exit"
 # ------------- END ------------------------------------
 # trying vim keybindings in zsh?
 bindkey -v
 export EDITOR="nvim"
 echo -e "Welcome to the Matrix, Bhavya!"
+
+# checking for dotfiles cron job
+# Check if dotfiles were successfully pushed
+if [[ -s ~/dotfiles/git_cron.log ]]; then
+    echo -e "\033[31mDotfiles not synchronized\033[0m"  # Red text
+else
+    echo -e "\033[32mDotfiles synced, All Good!\033[0m"  # Green text
+fi
+
 
 . "$HOME/.local/bin/env"
