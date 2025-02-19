@@ -17,6 +17,7 @@
   "lazygit.nvim": { "branch": "main", "commit": "77a0d42943d8265271e6e6beaed72da54eeb17e7" },
   "leetcode.nvim": { "branch": "master", "commit": "db7e1cd6b9191b34b4c1f2f96e4e3949cde9f951" },
   "lspkind.nvim": { "branch": "master", "commit": "d79a1c3299ad0ef94e255d045bed9fa26025dab6" },
+  "lualine-macro-recording.nvim": { "branch": "main", "commit": "e2dcf63ba74e6111b53e1520a4f8a17a3d7427a1" },
   "lualine.nvim": { "branch": "master", "commit": "2a5bae925481f999263d6f5ed8361baef8df4f83" },
   "markview.nvim": { "branch": "main", "commit": "e94d34c1a7d11bdcf7ffcdcc2097f88961033447" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "f75e877f5266e87523eb5a18fcde2081820d087b" },

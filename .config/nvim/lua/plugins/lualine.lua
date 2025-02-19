@@ -1,6 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	dependencies = { { "nvim-tree/nvim-web-devicons" }, { "yavorski/lualine-macro-recording.nvim" } },
 	opts = {
 		theme = "palenight",
 		sections = {
@@ -8,6 +8,10 @@ return {
 				"filename",
 				"searchcount",
 				"selectioncount",
+				{
+					"macro_recording",
+					"%S",
+				},
 			},
 		},
 		tabline = {
