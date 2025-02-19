@@ -9,9 +9,10 @@ local fmta = require("luasnip.extras.fmt").fmta
 local rep = require("luasnip.extras").rep
 
 return {
-	s({ trig = "print", snippetType = "autosnippet" }, {
-		t("printf("),
-		i(1),
-		t(");"),
-	}),
+	-- s({ trig = "print", snippetType = "autosnippet" }, {
+	-- 	t("printf("),
+	-- 	i(1),
+	-- 	t(");"),
+	-- }),
+	-- the one with the lsp is much better
 }
