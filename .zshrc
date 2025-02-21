@@ -86,6 +86,10 @@ alias c="clear"
 
 # vim like quitting?
 alias :q="exit"
+
+# say 'open' to open things
+alias open="wsl-open"
+
 # ------------- END ------------------------------------
 # trying vim keybindings in zsh?
 bindkey -v
