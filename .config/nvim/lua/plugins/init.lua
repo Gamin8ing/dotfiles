@@ -80,5 +80,11 @@ return {
 		"OXY2DEV/markview.nvim",
 		lazy = false,
 	},
+	{
+		"nvzone/typr",
+		dependencies = "nvzone/volt",
+		opts = {},
+		cmd = { "Typr", "TyprStats" },
+	},
 }
 -- TODO:
