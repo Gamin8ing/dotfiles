@@ -90,6 +90,9 @@ alias :q="exit"
 # say 'open' to open things
 alias open="wsl-open"
 
+# 'nv' to nvim
+alias nv="nvim"
+
 # ------------- END ------------------------------------
 # trying vim keybindings in zsh?
 bindkey -v
