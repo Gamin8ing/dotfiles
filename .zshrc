@@ -97,7 +97,7 @@ alias nv="nvim"
 # trying vim keybindings in zsh?
 bindkey -v
 export EDITOR="nvim"
-echo -e "Welcome to the Matrix, Bhavya!"
+cowsay "\"Do things that make you forget to check your phone.\""
 
 # checking for dotfiles cron job
 # Check if dotfiles were successfully pushed checks daily
