@@ -93,6 +93,13 @@ alias open="wsl-open"
 # 'nv' to nvim
 alias nv="nvim"
 
+# mkdir and cd in one
+mkcdir ()
+{
+    mkdir -p "$1" &&
+       cd "$1"
+}
+
 # ------------- END ------------------------------------
 # trying vim keybindings in zsh?
 bindkey -v
