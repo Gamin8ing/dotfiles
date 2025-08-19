@@ -35,5 +35,4 @@ vim.o.winborder = 'rounded'
 vim.cmd("set completeopt+=noselect") -- the autocomnplete go crazy
 
 vim.o.undofile = true
-vim.o.undodir='~/.config/nvim/undo'
 
