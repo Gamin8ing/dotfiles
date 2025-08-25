@@ -1,0 +1,15 @@
+- swap file created
+- installed firefox added custom them using firefox cxx (premade swayfox)
+- installed waybar
+- configuring waybar
+- set up firewall (`ufw`)
+- set up a display manager (greetd and using tuigreet for a greeter)
+- installed audio manager (piperwire)
+- enabled TRIM
+- installed fwupd to get firmware update
+- installing bluetooth (bluez bluez-utils bluetui)
+- install a wallpaper utility (swww)
+- tmux
+- network manager 
+- setting up proxy and adding proxy var to sudoers file
+- screenshotting agent done (grim with slurp)
