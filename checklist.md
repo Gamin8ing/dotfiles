@@ -13,3 +13,4 @@
 - network manager 
 - setting up proxy and adding proxy var to sudoers file
 - screenshotting agent done (grim with slurp)
+- added proxy in ssh for usage over wifi
