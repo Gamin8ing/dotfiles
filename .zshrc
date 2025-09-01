@@ -89,3 +89,12 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
 fi
+
+# Set for the LFS
+export LFS=/mnt/wmols
+umask 022
+
+export http_proxy="http://172.31.2.4:8080"
+export https_proxy="http://172.31.2.4:8080"
+export HTTP_PROXY="http://172.31.2.4:8080"
+export HTTPS_PROXY="http://172.31.2.4:8080"

@@ -14,3 +14,5 @@
 - setting up proxy and adding proxy var to sudoers file
 - screenshotting agent done (grim with slurp)
 - added proxy in ssh for usage over wifi
+- installed `pam_rundir` module, to set up the `$XDG_RUNTIME_DIR` env var.
+- installed `power-profiles-daemon` to set the power profile
