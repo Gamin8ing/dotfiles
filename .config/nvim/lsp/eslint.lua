@@ -39,7 +39,7 @@
 ---
 --- /!\ When using flat config files, you need to use them across all your packages in your monorepo, as it's a global setting for the server.
 
-local util = require 'lspconfig.util'
+-- local util = require 'lspconfig.util'
 local lsp = vim.lsp
 
 local eslint_config_files = {
@@ -80,7 +80,7 @@ return {
         arguments = {
           {
             uri = vim.uri_from_bufnr(bufnr),
-            version = lsp.util.buf_versions[bufnr],
+            -- version = lsp.util.buf_versions[bufnr],
           },
         },
       }, nil, bufnr)
@@ -104,19 +104,19 @@ return {
     --
     -- Eslint used to support package.json files as config files, but it doesn't anymore.
     -- We keep this for backward compatibility.
-    local filename = vim.api.nvim_buf_get_name(bufnr)
-    local eslint_config_files_with_package_json =
-      util.insert_package_json(eslint_config_files, 'eslintConfig', filename)
-    local is_buffer_using_eslint = vim.fs.find(eslint_config_files_with_package_json, {
-      path = filename,
-      type = 'file',
-      limit = 1,
-      upward = true,
-      stop = vim.fs.dirname(project_root),
-    })[1]
-    if not is_buffer_using_eslint then
-      return
-    end
+    -- local filename = vim.api.nvim_buf_get_name(bufnr)
+    -- local eslint_config_files_with_package_json =
+    --   util.insert_package_json(eslint_config_files, 'eslintConfig', filename)
+    -- local is_buffer_using_eslint = vim.fs.find(eslint_config_files_with_package_json, {
+    --   path = filename,
+    --   type = 'file',
+    --   limit = 1,
+    --   upward = true,
+    --   stop = vim.fs.dirname(project_root),
+    -- })[1]
+    -- if not is_buffer_using_eslint then
+    --   return
+    -- end
 
     on_dir(project_root)
   end,
