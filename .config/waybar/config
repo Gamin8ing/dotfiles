@@ -145,7 +145,7 @@
         "cava_config": "/home/gamin8ing/.config/cava/config",
         "framerate": 30,
         "autosens": 1,
-        "bars": 14,
+        "bars": 12,
         "sleep_timer": 5,
         "hide_on_silence": true,
         "method": "pipewire",

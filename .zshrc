@@ -1,6 +1,4 @@
-﻿
-
-# StarShip Prompt (again lol)
+# StarShi Prompt (again lol)
 # a lightweight prompt
 eval "$(starship init zsh)"
 
@@ -24,7 +22,7 @@ zstyle ':completion:*' menu select # menu style completion press TAB twice
 [[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
 
 # for npm 
-export PATH=$HOME/.npm-global/bin:$PATH
+export PATH=$HOME/.npm-global/bin:$PATH:/home/gamin8ing/.cargo/bin
 
 # --------------- PLUGINS CONFIGS ----------------------
 #
@@ -103,15 +101,20 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
   exec tmux
 fi
 
+# setting manpager as nvim
+export MANPAGER='nvim +Man!'
+
 # Set for the LFS
 export LFS=/mnt/wmols
 umask 022
 
-export http_proxy="http://172.31.2.4:8080"
-export https_proxy="http://172.31.2.4:8080"
-export HTTP_PROXY="http://172.31.2.4:8080"
-export HTTPS_PROXY="http://172.31.2.4:8080"
+# export http_proxy="http://172.31.2.4:8080"
+# export https_proxy="http://172.31.2.4:8080"
+# export HTTP_PROXY="http://172.31.2.4:8080"
+# export HTTPS_PROXY="http://172.31.2.4:8080"
 export no_proxy="localhost,127.0.0.1"
+#
+# source ~/.config/environment.d/proxy.conf
 
 
 # create a zkbd compatible hash;
@@ -154,3 +157,19 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
 	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
+
+# -----------------------------------------------------------------------------
+figlet "Hello World" | lolcat
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# yazi helper function
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}

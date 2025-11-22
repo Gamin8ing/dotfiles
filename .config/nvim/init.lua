@@ -4,4 +4,4 @@ require("config.options") -- loading options for nvim
 
 vim.cmd([[colorscheme dracula]])
 
-vim.lsp.enable({"lua_ls", "clangd", "eslint", "pyright", "ts_ls"})
+vim.lsp.enable({"lua_ls", "clangd", "eslint", "pyright", "ts_ls", "asm_lsp"})
