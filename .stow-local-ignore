@@ -1,0 +1,11 @@
+
+# Ignore config subfolders
+.*rofi.*
+.*swaync.*
+.*waybar.*
+.*hypr.*
+
+# Ignore repo/meta files
+README\.md
+checklist\.md
+\.git
