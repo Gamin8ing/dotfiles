@@ -64,6 +64,13 @@ mkcdir ()
 alias mux="tmuxinator"
 alias tmux="tmux -u"
 
+# ------------------ ZSH PLUGINS --------------------------
+bindkey ' ' magic-space
+
+chpwd() {
+  lsa
+}
+
 # ------------------ GIT SSH AGENT ----------------------
 
 # env=~/.ssh/agent.env
@@ -157,7 +164,6 @@ typeset -g -A key
 # fi
 
 # -----------------------------------------------------------------------------
-figlet "Hello World" | lolcat
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 # export SDKMAN_DIR="$HOME/.sdkman"
@@ -171,3 +177,16 @@ function y() {
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
+
+clear
+echo -e '
+ \e[H\e[2J
+           \e[0;36m.
+          \e[0;36m/ \
+         \e[0;36m/   \      \e[1;37m               #     \e[1;36m| *
+        \e[0;36m/^.   \     \e[1;37m a##e #%" a#"e 6##%  \e[1;36m| | |-^-. |   | \ /
+       \e[0;36m/  .-.  \    \e[1;37m.oOo# #   #    #  #  \e[1;36m| | |   | |   |  X
+      \e[0;36m/  (   ) _\   \e[1;37m%OoO# #   %#e" #  #  \e[1;36m| | |   | ^._.| / \
+     \e[1;36m/ _.~   ~._^\
+    \e[1;36m/.^         ^.\
+'
