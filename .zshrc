@@ -35,7 +35,7 @@ source <(fzf --zsh)
 alias cd="z" 
 # zoxide, easy to use cd
 
-alias lsa="eza -a -l -G --icons=always --group-directories-first --git --no-permissions --no-time --no-user -F -X" 
+alias lsa="eza -a -G --icons=always --group-directories-first --git -F -X" 
 # eza, the better looking ls, looks good
 
 alias lg="lazygit" 
