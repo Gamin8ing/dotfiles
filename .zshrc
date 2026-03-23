@@ -103,7 +103,7 @@ source /usr/share/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
 # --------- STARTUPS -----------
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux -u
+  mux start chilin
 fi
 
 # setting manpager as nvim
@@ -163,6 +163,7 @@ typeset -g -A key
 # 	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 # fi
 
+
 # -----------------------------------------------------------------------------
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
@@ -190,3 +191,14 @@ echo -e '
      \e[1;36m/ _.~   ~._^\
     \e[1;36m/.^         ^.\
 '
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
+#so homebrew python3 was taken up first and was causing trouble. hence the system python3 is put forward with this one
+export PATH="/usr/bin:$PATH"
+export PATH=$PATH:/snap/bin
+
+PATH="/home/bhavya/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/bhavya/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/bhavya/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/bhavya/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/bhavya/perl5"; export PERL_MM_OPT;

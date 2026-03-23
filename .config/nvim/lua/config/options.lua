@@ -3,16 +3,17 @@ vim.opt.rnu = true -- rel numbering
 vim.opt.number = true -- absolute line number
 vim.opt.clipboard:append("unnamedplus") -- setting up the clipboard
 
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 8
+vim.opt.shiftwidth = 8
 vim.opt.expandtab = true
 
 vim.opt.smartindent = true
 vim.opt.autoindent = true
 
 vim.opt.wrap = false
+vim.opt.textwidth = 80
 
-vim.opt.hlsearch = true
+vim.opt.hlsearch = true -- highlighting the search results
 vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
@@ -23,6 +24,13 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
+
+vim.opt.autoread = true -- reading the files automatically after they change on disk
+-- Auto-check file changes when cursor is idle
+vim.api.nvim_create_autocmd("CursorHold", {
+  pattern = "*",
+  command = "checktime",
+})
 
 vim.opt.ignorecase = true -- ignore case when searching
 vim.opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
